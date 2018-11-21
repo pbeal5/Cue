@@ -15,6 +15,9 @@
 		ED83486921A2031A00108A02 /* restaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83486821A2031A00108A02 /* restaurantCell.swift */; };
 		ED83486B21A20E2000108A02 /* contactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83486A21A20E2000108A02 /* contactsViewController.swift */; };
 		ED83486D21A20F0800108A02 /* contactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83486C21A20F0800108A02 /* contactCell.swift */; };
+		ED90123321A4C0D0006A67B2 /* whoOrderedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED90123221A4C0D0006A67B2 /* whoOrderedViewController.swift */; };
+		ED90123521A4C0E4006A67B2 /* viewFriendsOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED90123421A4C0E4006A67B2 /* viewFriendsOrderViewController.swift */; };
+		ED90123721A4C10C006A67B2 /* friendsOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED90123621A4C10C006A67B2 /* friendsOrderCell.swift */; };
 		EDDABD27219E360D00855763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDABD26219E360D00855763 /* AppDelegate.swift */; };
 		EDDABD29219E360D00855763 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDABD28219E360D00855763 /* LoginViewController.swift */; };
 		EDDABD2C219E360D00855763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDDABD2A219E360D00855763 /* Main.storyboard */; };
@@ -32,6 +35,9 @@
 		ED83486821A2031A00108A02 /* restaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = restaurantCell.swift; sourceTree = "<group>"; };
 		ED83486A21A20E2000108A02 /* contactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactsViewController.swift; sourceTree = "<group>"; };
 		ED83486C21A20F0800108A02 /* contactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactCell.swift; sourceTree = "<group>"; };
+		ED90123221A4C0D0006A67B2 /* whoOrderedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whoOrderedViewController.swift; sourceTree = "<group>"; };
+		ED90123421A4C0E4006A67B2 /* viewFriendsOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewFriendsOrderViewController.swift; sourceTree = "<group>"; };
+		ED90123621A4C10C006A67B2 /* friendsOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendsOrderCell.swift; sourceTree = "<group>"; };
 		EDDABD23219E360D00855763 /* Cue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDDABD26219E360D00855763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDDABD28219E360D00855763 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -72,21 +78,24 @@
 		EDDABD25219E360D00855763 /* Cue */ = {
 			isa = PBXGroup;
 			children = (
-				ED504B6621A0DDEA00D1BE0C /* orderCell.swift */,
-				EDDABD26219E360D00855763 /* AppDelegate.swift */,
-				ED504B6321A0D7BF00D1BE0C /* Cue.xcdatamodeld */,
 				EDDABD2A219E360D00855763 /* Main.storyboard */,
+				ED504B6321A0D7BF00D1BE0C /* Cue.xcdatamodeld */,
+				ED90123221A4C0D0006A67B2 /* whoOrderedViewController.swift */,
+				ED90123421A4C0E4006A67B2 /* viewFriendsOrderViewController.swift */,
+				ED90123621A4C10C006A67B2 /* friendsOrderCell.swift */,
 				ED83486C21A20F0800108A02 /* contactCell.swift */,
 				ED83486A21A20E2000108A02 /* contactsViewController.swift */,
 				ED83486821A2031A00108A02 /* restaurantCell.swift */,
+				ED504B6621A0DDEA00D1BE0C /* orderCell.swift */,
 				ED83486621A2024300108A02 /* gettingFoodViewController.swift */,
 				ED64059B21A0BDDB00FD4B27 /* ordersViewController.swift */,
+				ED64059921A0BCEF00FD4B27 /* makeOrderViewController.swift */,
 				EDDABD2D219E361000855763 /* Assets.xcassets */,
 				EDDABD2F219E361000855763 /* LaunchScreen.storyboard */,
 				EDDABD32219E361000855763 /* Info.plist */,
 				EDDABD28219E360D00855763 /* LoginViewController.swift */,
-				ED64059921A0BCEF00FD4B27 /* makeOrderViewController.swift */,
 				EDDABD3A219E798200855763 /* MainTabController.swift */,
+				EDDABD26219E360D00855763 /* AppDelegate.swift */,
 			);
 			path = Cue;
 			sourceTree = "<group>";
@@ -168,9 +177,12 @@
 				ED83486721A2024300108A02 /* gettingFoodViewController.swift in Sources */,
 				EDDABD29219E360D00855763 /* LoginViewController.swift in Sources */,
 				ED83486921A2031A00108A02 /* restaurantCell.swift in Sources */,
+				ED90123721A4C10C006A67B2 /* friendsOrderCell.swift in Sources */,
 				EDDABD27219E360D00855763 /* AppDelegate.swift in Sources */,
+				ED90123321A4C0D0006A67B2 /* whoOrderedViewController.swift in Sources */,
 				ED83486B21A20E2000108A02 /* contactsViewController.swift in Sources */,
 				EDDABD3B219E798200855763 /* MainTabController.swift in Sources */,
+				ED90123521A4C0E4006A67B2 /* viewFriendsOrderViewController.swift in Sources */,
 				ED64059A21A0BCEF00FD4B27 /* makeOrderViewController.swift in Sources */,
 				ED83486D21A20F0800108A02 /* contactCell.swift in Sources */,
 			);

@@ -38,10 +38,10 @@
             </objects>
             <point key="canvasLocation" x="177" y="25"/>
         </scene>
-        <!--View Controller-->
+        <!--Who Ordered View Controller-->
         <scene sceneID="BLF-BJ-9YY">
             <objects>
-                <viewController id="Rj8-Ya-65Z" sceneMemberID="viewController">
+                <viewController id="Rj8-Ya-65Z" customClass="whoOrderedViewController" customModule="Cue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="30e-Ky-LyZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +56,7 @@
                                 <rect key="frame" x="0.0" y="67" width="375" height="434"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="awI-0f-krx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="awI-0f-krx" customClass="FriendsOrderCell" customModule="Cue" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="awI-0f-krx" id="YJq-2n-BDQ">
@@ -76,6 +76,9 @@
                                                         <constraint firstAttribute="height" constant="30" id="pt8-no-FEg"/>
                                                     </constraints>
                                                     <state key="normal" backgroundImage="emptyAlert"/>
+                                                    <connections>
+                                                        <action selector="statusPressed:" destination="awI-0f-krx" eventType="touchUpInside" id="nxD-fV-LRi"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -85,6 +88,10 @@
                                                 <constraint firstItem="gd0-1U-Tqy" firstAttribute="centerY" secondItem="YJq-2n-BDQ" secondAttribute="centerY" id="lnK-UZ-Gy7"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contactNameLabel" destination="Dlm-YW-d1g" id="ddq-NJ-lvu"/>
+                                            <outlet property="statusButton" destination="gd0-1U-Tqy" id="onZ-Ku-ce1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -98,6 +105,9 @@
                                 <state key="normal" title="Send last call">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendLastCallPressed:" destination="Rj8-Ya-65Z" eventType="touchUpInside" id="PH7-iM-fb6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -115,15 +125,19 @@
                         <viewLayoutGuide key="safeArea" id="S6S-Bd-SDi"/>
                     </view>
                     <tabBarItem key="tabBarItem" image="phone" id="pQY-bA-u1e"/>
+                    <connections>
+                        <outlet property="tableView" destination="bia-ga-RbI" id="q99-AI-urx"/>
+                        <segue destination="tMO-La-r9E" kind="presentation" identifier="FriendsOrderSegue" id="fgP-nc-dgJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KY2-Wf-ULx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1981.5999999999999" y="1040.3298350824589"/>
         </scene>
-        <!--View Controller-->
+        <!--View Friends Order View Controller-->
         <scene sceneID="FxS-fj-RWM">
             <objects>
-                <viewController id="tMO-La-r9E" sceneMemberID="viewController">
+                <viewController id="tMO-La-r9E" customClass="viewFriendsOrderViewController" customModule="Cue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7gO-ft-ldW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,6 +149,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="125.5" height="60"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                         <state key="normal" title="Back"/>
+                                        <connections>
+                                            <action selector="backPressed:" destination="tMO-La-r9E" eventType="touchUpInside" id="ccF-WA-Zlp"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chipotle" translatesAutoresizingMaskIntoConstraints="NO" id="fes-as-3dP">
                                         <rect key="frame" x="141.5" y="0.0" width="60" height="60"/>
@@ -234,6 +251,15 @@
                     <navigationItem key="navigationItem" id="U6r-an-e16">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="Wdl-LA-85h"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="baseLabel" destination="NE7-eu-yYP" id="7EM-TL-gua"/>
+                        <outlet property="friendNameLabel" destination="6wG-Cq-gwo" id="vvw-cp-eM3"/>
+                        <outlet property="ingredientsLabel" destination="BSX-np-56k" id="U95-gy-heC"/>
+                        <outlet property="mainLabel" destination="03k-L7-GYf" id="cdB-O3-a8L"/>
+                        <outlet property="restaurantLogoImageView" destination="fes-as-3dP" id="0SY-nN-4Zs"/>
+                        <outlet property="sidesLabel" destination="HOv-Yg-1f5" id="I98-N9-MZz"/>
+                        <outlet property="specialInstructionsLabel" destination="7iG-AR-drp" id="vZq-i6-FVN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RMt-iP-qV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
