@@ -365,7 +365,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YKT-OX-8Kh">
-                                <rect key="frame" x="0.0" y="126" width="375" height="360"/>
+                                <rect key="frame" x="0.0" y="206" width="375" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCell" rowHeight="32" id="tKe-tQ-b8x" customClass="ContactCell" customModule="Cue" customModuleProvider="target">
@@ -466,6 +466,10 @@
                                     <action selector="cueUpPressed:" destination="dZj-nj-y8H" eventType="touchUpInside" id="uUD-fF-u4G"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="yZW-tO-N02">
+                                <rect key="frame" x="0.0" y="142" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -475,26 +479,39 @@
                             <constraint firstItem="dLR-lG-aWE" firstAttribute="trailing" secondItem="Mbd-cu-0o4" secondAttribute="trailing" constant="16" id="460-QJ-YHr"/>
                             <constraint firstItem="YKT-OX-8Kh" firstAttribute="leading" secondItem="dLR-lG-aWE" secondAttribute="leading" id="4MB-gu-UM6"/>
                             <constraint firstItem="Mbd-cu-0o4" firstAttribute="leading" secondItem="dLR-lG-aWE" secondAttribute="leading" constant="16" id="9B2-sX-xoQ"/>
+                            <constraint firstItem="yZW-tO-N02" firstAttribute="leading" secondItem="dLR-lG-aWE" secondAttribute="leading" id="FPd-Vx-yqp"/>
                             <constraint firstItem="dLR-lG-aWE" firstAttribute="trailing" secondItem="YKT-OX-8Kh" secondAttribute="trailing" id="IKk-c6-4vV"/>
                             <constraint firstItem="kBe-Iu-quw" firstAttribute="leading" secondItem="dLR-lG-aWE" secondAttribute="leading" constant="16" id="WvM-6L-BaB"/>
                             <constraint firstItem="kBe-Iu-quw" firstAttribute="top" secondItem="dLR-lG-aWE" secondAttribute="top" constant="15" id="aFb-QF-4zV"/>
                             <constraint firstItem="IZk-UC-cfB" firstAttribute="leading" secondItem="dLR-lG-aWE" secondAttribute="leading" constant="16" id="ak9-xD-Yps"/>
                             <constraint firstItem="IZk-UC-cfB" firstAttribute="top" secondItem="cv5-Er-Ug6" secondAttribute="bottom" constant="6" id="bDM-2K-Nw8"/>
                             <constraint firstItem="dLR-lG-aWE" firstAttribute="trailing" secondItem="IZk-UC-cfB" secondAttribute="trailing" constant="16" id="dH1-VT-YeO"/>
-                            <constraint firstItem="YKT-OX-8Kh" firstAttribute="top" secondItem="IZk-UC-cfB" secondAttribute="bottom" id="eAy-Bs-8hR"/>
+                            <constraint firstItem="yZW-tO-N02" firstAttribute="top" secondItem="IZk-UC-cfB" secondAttribute="bottom" constant="16" id="doo-Ge-5Kl"/>
+                            <constraint firstItem="YKT-OX-8Kh" firstAttribute="top" secondItem="yZW-tO-N02" secondAttribute="bottom" constant="8" id="rxR-uZ-0xk"/>
                             <constraint firstItem="cv5-Er-Ug6" firstAttribute="centerX" secondItem="yv6-Ma-bhF" secondAttribute="centerX" id="sa9-LB-jXy"/>
+                            <constraint firstItem="yZW-tO-N02" firstAttribute="trailing" secondItem="dLR-lG-aWE" secondAttribute="trailing" id="wwn-UG-Atd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dLR-lG-aWE"/>
                     </view>
                     <connections>
+                        <outlet property="contactSearchBar" destination="yZW-tO-N02" id="nyL-VD-GKH"/>
                         <outlet property="restaurantLogo" destination="cv5-Er-Ug6" id="Uij-7g-FMy"/>
+                        <outlet property="searchDisplayController" destination="0uI-9a-589" id="Kc3-9k-RqH"/>
                         <outlet property="tableView" destination="YKT-OX-8Kh" id="WoA-KA-RrE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ww6-bW-Euy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Dtr-z5-JUm" userLabel="Exit" sceneMemberID="exit"/>
+                <searchDisplayController id="0uI-9a-589">
+                    <connections>
+                        <outlet property="delegate" destination="dZj-nj-y8H" id="BX4-DX-ky5"/>
+                        <outlet property="searchContentsController" destination="dZj-nj-y8H" id="DNF-O7-ll4"/>
+                        <outlet property="searchResultsDataSource" destination="dZj-nj-y8H" id="Axh-5k-eUg"/>
+                        <outlet property="searchResultsDelegate" destination="dZj-nj-y8H" id="B1Z-Ya-VcH"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2737" y="356"/>
+            <point key="canvasLocation" x="2736.8000000000002" y="355.7721139430285"/>
         </scene>
         <!--Orders View Controller-->
         <scene sceneID="EAY-Pd-Q0l">
