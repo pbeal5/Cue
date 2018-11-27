@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Contacts
 
 class whoOrderedViewController: UIViewController {
 
@@ -15,12 +16,17 @@ class whoOrderedViewController: UIViewController {
     
     //variables
     var tableData : [FriendsOrder] = []
+    var contactsSelected : [CNContact]?
     
     //over rides
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print(contactsSelected)
     }
     
     //button

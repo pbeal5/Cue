@@ -27,6 +27,7 @@ class contactsViewController: UIViewController {
     var contacts : [CNContact] = []
     var filteredContacts : [CNContact] = []
     var isSelected: [Bool] = []
+    var selectedContactsDict : [String : String] = [:]
     
     //viewdidload
     override func viewDidLoad() {
@@ -65,9 +66,9 @@ class contactsViewController: UIViewController {
         
         for i in 0..<isSelected.count{
             if isSelected[i]{
-                print(contacts[i])
                 count += 1
             }
+            
         }
         
         var alert : UIAlertController?
@@ -81,9 +82,18 @@ class contactsViewController: UIViewController {
         
         alert?.addAction(UIAlertAction(title: "Yes, add more", style: .cancel, handler: nil))
         
-        alert?.addAction(UIAlertAction(title: "No, all good.", style: .default, handler: {(UIAlertAction) in
+        alert?.addAction(UIAlertAction(title: "No, all good.", style: .default, handler: {action in
             let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabController") as! MainTabController
             mainTabController.selectedViewController = mainTabController.viewControllers?[2]
+            
+            let vc = self.tabBarController?.viewControllers![2] as? whoOrderedViewController
+            vc?.contactsSelected = self.contacts
+        
+            
+            
+//            var destTab = self.tabBarController?.viewControllers?[2] as whoOrderedViewController
+//            destTab.con = firstArray
+//
             self.present(mainTabController, animated: true, completion: nil)
         }))
         
@@ -112,6 +122,14 @@ extension contactsViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "ContactCell", for : indexPath) as! ContactCell
+        
+        if let val = selectedContactsDict[filteredContacts[indexPath.row].identifier] {
+            cell.contactSelected.setBackgroundImage(UIImage(named: "filledCircle"), for: .normal)
+        }
+        else{
+           cell.contactSelected.setBackgroundImage(UIImage(named: "emptyCircle"), for: .normal)
+        }
+        
         cell.contactNameLabel.text = filteredContacts[indexPath.row].givenName + " " + filteredContacts[indexPath.row].familyName
         cell.indexPath = indexPath
         cell.delegate = self
@@ -129,8 +147,18 @@ extension contactsViewController : UITableViewDelegate, UITableViewDataSource {
 extension contactsViewController : ContactCellDelegate{
     
     func selectedPressed(sender: ContactCell) {
-        isSelected[(sender.indexPath?.row)!] = !isSelected[(sender.indexPath?.row)!]
-        print("in selectedPressed")
+        
+        let contact = sender.indexPath?.row
+
+        if isSelected[contact!]{
+            selectedContactsDict.removeValue(forKey: filteredContacts[contact!].identifier)
+        }
+        else {
+            selectedContactsDict[filteredContacts[contact!].identifier] = filteredContacts[contact!].identifier
+        }
+        
+        isSelected[contact!] = !isSelected[contact!]
+        
     }
     
 }
@@ -145,3 +173,4 @@ extension contactsViewController : UISearchBarDelegate{
         tableView.reloadData()
     }
 }
+

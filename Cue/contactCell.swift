@@ -29,9 +29,7 @@ class ContactCell : UITableViewCell{
         else{
            contactSelected.setBackgroundImage(UIImage(named: "emptyCircle"), for : .normal)
         }
-        
         delegate?.selectedPressed(sender : self)
-        
     }
     
 }

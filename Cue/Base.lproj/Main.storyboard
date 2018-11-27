@@ -132,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KY2-Wf-ULx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1981.5999999999999" y="1040.3298350824589"/>
+            <point key="canvasLocation" x="1982" y="1191"/>
         </scene>
         <!--View Friends Order View Controller-->
         <scene sceneID="FxS-fj-RWM">
@@ -263,7 +263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RMt-iP-qV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2720.8000000000002" y="1039.4302848575712"/>
+            <point key="canvasLocation" x="2778" y="1191"/>
         </scene>
         <!--Getting Food View Controller-->
         <scene sceneID="AA8-fF-ZdR">
