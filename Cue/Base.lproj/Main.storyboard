@@ -17,26 +17,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z21-lc-rXl">
-                                <rect key="frame" x="168" y="617" width="38" height="30"/>
-                                <state key="normal" title="Login"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_fries" translatesAutoresizingMaskIntoConstraints="NO" id="qYd-AH-wrZ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z21-lc-rXl">
+                                <rect key="frame" x="137.5" y="553" width="100" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="CyE-aQ-TME"/>
+                                    <constraint firstAttribute="height" constant="50" id="aeg-az-Uqw"/>
+                                </constraints>
+                                <state key="normal" title="Login">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pay-Wb-Jzf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfN-5R-kir">
+                                <rect key="frame" x="137.5" y="495" width="100" height="50"/>
+                                <color key="backgroundColor" red="0.92156862750000001" green="0.75686274509999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Sjf-HL-msw"/>
+                                    <constraint firstAttribute="height" constant="50" id="cZ9-eK-wlo"/>
+                                </constraints>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.53329986330000001" green="0.84764951470000005" blue="0.52543663979999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="z21-lc-rXl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="168" id="HHH-pa-wCe"/>
-                            <constraint firstAttribute="bottom" secondItem="z21-lc-rXl" secondAttribute="bottom" constant="20" symbolic="YES" id="VKU-hD-J8H"/>
-                            <constraint firstItem="z21-lc-rXl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="moi-LU-lwm"/>
+                            <constraint firstItem="vfN-5R-kir" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1IS-fN-Gsa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qYd-AH-wrZ" secondAttribute="trailing" id="6T1-M4-SRq"/>
+                            <constraint firstItem="qYd-AH-wrZ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="MPf-zb-vEA"/>
+                            <constraint firstItem="z21-lc-rXl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SUf-6j-H4w"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="z21-lc-rXl" secondAttribute="bottom" constant="64" id="cJp-Mn-BWb"/>
+                            <constraint firstItem="z21-lc-rXl" firstAttribute="top" secondItem="vfN-5R-kir" secondAttribute="bottom" constant="8" id="p9j-GR-8Tl"/>
+                            <constraint firstItem="qYd-AH-wrZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pal-V5-Jjc"/>
+                            <constraint firstItem="qYd-AH-wrZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qVB-j3-1ok"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="177" y="25"/>
+            <point key="canvasLocation" x="176.80000000000001" y="24.7376311844078"/>
         </scene>
         <!--Who Ordered View Controller-->
         <scene sceneID="BLF-BJ-9YY">
@@ -754,5 +780,6 @@
         <image name="emptyCircle" width="22.5" height="22.5"/>
         <image name="person" width="26.5" height="24"/>
         <image name="phone" width="24.5" height="24.5"/>
+        <image name="splash_fries" width="800" height="1420"/>
     </resources>
 </document>
