@@ -28,6 +28,7 @@ class contactsViewController: UIViewController {
     var filteredContacts : [CNContact] = []
     var isSelected: [Bool] = []
     var selectedContactsDict : [String : String] = [:]
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //viewdidload
     override func viewDidLoad() {
@@ -86,9 +87,10 @@ class contactsViewController: UIViewController {
             let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabController") as! MainTabController
             mainTabController.selectedViewController = mainTabController.viewControllers?[2]
             
-            let vc = self.tabBarController?.viewControllers![2] as? whoOrderedViewController
-            vc?.contactsSelected = self.contacts
+//            let vc = self.tabBarController?.viewControllers![2] as? whoOrderedViewController
+//            vc?.contactsSelected = self.contacts
         
+        // store firstName, lastName, identifier
             
             
 //            var destTab = self.tabBarController?.viewControllers?[2] as whoOrderedViewController

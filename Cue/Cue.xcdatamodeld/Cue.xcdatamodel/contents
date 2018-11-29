@@ -3,6 +3,7 @@
     <entity name="FriendsOrder" representedClassName="FriendsOrder" syncable="YES" codeGenerationType="class">
         <attribute name="base" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ingredients" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="main" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,8 +24,8 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="FriendsOrder" positionX="-63" positionY="27" width="128" height="195"/>
         <element name="Order" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="Restaurant" positionX="-63" positionY="27" width="128" height="60"/>
-        <element name="FriendsOrder" positionX="-63" positionY="27" width="128" height="180"/>
     </elements>
 </model>

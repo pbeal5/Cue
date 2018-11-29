@@ -84,7 +84,6 @@ extension ordersViewController : makeOrderViewControllerDelegate{
     }
     
     func saveOrderPressed(orderInfo : [String : String], indexPath : IndexPath?) {
-        print("Go Bucks")
         
         if let indexPath = indexPath{
             let order = tableData[indexPath.row]
