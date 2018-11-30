@@ -14,7 +14,7 @@ class SettingsCell : UITableViewCell {
     var indexPath : IndexPath?
     
     @IBOutlet weak var settingsLabel: UILabel!
-    @IBAction func arrowPressed(_ sender: UIButton) {
-    }
+    
+    @IBOutlet weak var rightArrowImageView: UIImageView!
     
 }

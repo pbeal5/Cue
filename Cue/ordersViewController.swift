@@ -33,36 +33,54 @@ class ordersViewController: UIViewController {
         tableView.reloadData()
     }
     
-    
+    //buttons
+    @IBAction func settingsPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "SettingsSegue", sender: sender)
+        
+    }
     
     @IBAction func makeOrderPressed(_ sender: UIButton) {
         //This will create segue between "make new order button" and Make Order View Controller
         performSegue(withIdentifier: "makeOrderSegue", sender: sender)
     }
     
+    @IBAction func unwindToOrdersViewController(segue:UIStoryboardSegue) { }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //set the destination as a var for wherever its going
-        let destination = segue.destination as! makeOrderViewController
-        destination.delegate = self
         
-        if let indexPath = sender as? IndexPath{
-            print(indexPath.row)
-            print(tableData[indexPath.row])
-            destination.indexPath = indexPath
-            destination.orderInfo["Main"] = tableData[indexPath.row].main
-            destination.orderInfo["Base"] = tableData[indexPath.row].base
-            destination.orderInfo["Ingredients"] = tableData[indexPath.row].ingredients
-            destination.orderInfo["Sides"] = tableData[indexPath.row].sides
-            destination.orderInfo["Special Instructions"] = tableData[indexPath.row].specialInstructions
-        }
-        else{
-            destination.orderInfo["Main"] = "Main"
-            destination.orderInfo["Base"] = "Base"
-            destination.orderInfo["Ingredients"] = "Ingredients"
-            destination.orderInfo["Sides"] = "Sides"
-            destination.orderInfo["Special Instructions"] = "Special Instructions"
-        }
+        var destination : UIStoryboardSegue?
         
+//        if segue.identifier == "SettingsSegue" {
+//            destination = segue.destination as! settingsViewController
+        
+        if let destination = segue.destination as? settingsViewController {
+            print("Settings")
+            
+        }
+        else if let destination = segue.destination as? makeOrderViewController {
+            
+            if let indexPath = sender as? IndexPath{
+                print(indexPath.row)
+                print(tableData[indexPath.row])
+                destination.indexPath = indexPath
+                destination.orderInfo["Main"] = tableData[indexPath.row].main
+                destination.orderInfo["Base"] = tableData[indexPath.row].base
+                destination.orderInfo["Ingredients"] = tableData[indexPath.row].ingredients
+                destination.orderInfo["Sides"] = tableData[indexPath.row].sides
+                destination.orderInfo["Special Instructions"] = tableData[indexPath.row].specialInstructions
+            }
+            else{
+                destination.orderInfo["Main"] = "Main"
+                destination.orderInfo["Base"] = "Base"
+                destination.orderInfo["Ingredients"] = "Ingredients"
+                destination.orderInfo["Sides"] = "Sides"
+                destination.orderInfo["Special Instructions"] = "Special Instructions"
+            }
+
+            destination.delegate = self
+        }
+    
     }
 
     func fetchOrderItems(){
@@ -80,6 +98,7 @@ class ordersViewController: UIViewController {
 extension ordersViewController : makeOrderViewControllerDelegate{
     
     func backPressed() {
+        print("back pressed")
         dismiss(animated: true, completion: nil)
     }
     
@@ -174,3 +193,4 @@ extension ordersViewController: OrderCellDelegate{
 //        performSegue(withIdentifier: "makeOrderSegue", sender: sender.indexPath)
     }
 }
+

@@ -558,6 +558,9 @@
                                 <rect key="frame" x="263" y="26" width="77" height="40"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="settingsPressed:" destination="ODV-f1-Zc0" eventType="touchUpInside" id="oSJ-Ne-Ljm"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pk-tL-hha">
                                 <rect key="frame" x="0.0" y="578" width="375" height="40"/>
@@ -627,6 +630,7 @@
                     <connections>
                         <outlet property="tableView" destination="ZFC-p6-v33" id="R4m-k6-pKa"/>
                         <segue destination="fw8-WK-TmY" kind="presentation" identifier="makeOrderSegue" id="Ugt-cR-Piv"/>
+                        <segue destination="51A-gN-OKZ" kind="show" identifier="SettingsSegue" animates="NO" id="FKe-Fj-h9x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Xa-E5-APZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -793,22 +797,23 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKR-2W-74c">
-                                                    <rect key="frame" x="322" y="11" width="22" height="22"/>
-                                                    <state key="normal" backgroundImage="rightArrow"/>
-                                                    <connections>
-                                                        <action selector="arrowPressed:" destination="BNE-4g-8KV" eventType="touchUpInside" id="jwE-b5-6FZ"/>
-                                                    </connections>
-                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="noD-Mf-tJV">
+                                                    <rect key="frame" x="344" y="14" width="16" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="1TS-T0-XEb"/>
+                                                        <constraint firstAttribute="width" constant="16" id="305-R6-WIL"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="noD-Mf-tJV" secondAttribute="trailing" constant="15" id="5qb-RI-god"/>
                                                 <constraint firstItem="zOE-6I-LcS" firstAttribute="centerY" secondItem="2VT-Vj-MiT" secondAttribute="centerY" id="I18-Sc-Hss"/>
-                                                <constraint firstItem="nKR-2W-74c" firstAttribute="centerY" secondItem="2VT-Vj-MiT" secondAttribute="centerY" id="q7d-Pa-xyQ"/>
+                                                <constraint firstItem="noD-Mf-tJV" firstAttribute="centerY" secondItem="2VT-Vj-MiT" secondAttribute="centerY" id="d81-90-jWD"/>
                                                 <constraint firstItem="zOE-6I-LcS" firstAttribute="leading" secondItem="2VT-Vj-MiT" secondAttribute="leadingMargin" constant="25" id="sih-kk-CXz"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="nKR-2W-74c" secondAttribute="trailing" constant="16" id="tBi-Sa-muT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="rightArrowImageView" destination="noD-Mf-tJV" id="qtb-V8-68w"/>
                                             <outlet property="settingsLabel" destination="zOE-6I-LcS" id="FCJ-hs-5xt"/>
                                         </connections>
                                     </tableViewCell>
@@ -829,10 +834,46 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eyd-wi-Dlx"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="kgv-Wn-vrG" id="1JV-y2-lpU"/>
+                        <segue destination="eew-QO-tR4" kind="unwind" identifier="unwindToOrdersViewController" animates="NO" unwindAction="unwindToOrdersViewControllerWithSegue:" id="78H-SD-uec"/>
+                        <segue destination="5Gr-D9-nKv" kind="presentation" identifier="SettingsDetailsSegue" id="Zex-F2-SXW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PJP-Uy-FdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eew-QO-tR4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2737" y="-1009"/>
+        </scene>
+        <!--Setting Details View Controller-->
+        <scene sceneID="QMG-Hn-XOy">
+            <objects>
+                <viewController id="5Gr-D9-nKv" customClass="settingDetailsViewController" customModule="Cue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X3O-qb-XcX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynj-n9-ORp">
+                                <rect key="frame" x="35" y="26" width="45" height="40"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backPressed:" destination="5Gr-D9-nKv" eventType="touchUpInside" id="wrs-iy-FUf"/>
+                                    <action selector="ordersPressed:" destination="51A-gN-OKZ" eventType="touchUpInside" id="vW4-0I-uZG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ynj-n9-ORp" firstAttribute="top" secondItem="yOz-W6-lT6" secondAttribute="top" constant="6" id="S9o-Z3-pSf"/>
+                            <constraint firstItem="ynj-n9-ORp" firstAttribute="leading" secondItem="yOz-W6-lT6" secondAttribute="leading" constant="35" id="hvb-rA-TvW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yOz-W6-lT6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xbh-r4-fdv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3455" y="-1010"/>
         </scene>
         <!--Main Tab Controller-->
         <scene sceneID="7fM-yO-WeH">
