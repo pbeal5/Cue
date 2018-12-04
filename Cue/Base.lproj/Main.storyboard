@@ -372,7 +372,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Djd-WK-hdf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="bag" id="Lf5-YC-pN6"/>
+                    <tabBarItem key="tabBarItem" title="" image="bag" selectedImage="selectedBag" id="Lf5-YC-pN6"/>
                     <connections>
                         <outlet property="tableView" destination="I8v-ct-KgM" id="CTM-hI-fpl"/>
                         <segue destination="dZj-nj-y8H" kind="presentation" identifier="ContactSegue" id="uPI-2C-AuD"/>
@@ -625,7 +625,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XQn-ER-ZlS"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="person" id="CdN-cL-69a"/>
+                    <tabBarItem key="tabBarItem" title="" image="person" selectedImage="selectedProfile" id="CdN-cL-69a"/>
                     <navigationItem key="navigationItem" id="JJ8-CX-s3P"/>
                     <connections>
                         <outlet property="tableView" destination="ZFC-p6-v33" id="R4m-k6-pKa"/>
@@ -903,6 +903,8 @@
         <image name="person" width="26.5" height="24"/>
         <image name="phone" width="24.5" height="24.5"/>
         <image name="rightArrow" width="22.5" height="22.5"/>
+        <image name="selectedBag" width="10.656000137329102" height="13.824000358581543"/>
+        <image name="selectedProfile" width="15.263999938964844" height="13.824000358581543"/>
         <image name="splash_fries" width="800" height="1420"/>
     </resources>
 </document>
