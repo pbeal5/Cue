@@ -27,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8EC62DF821B6006F007DA100 /* Cue.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cue.entitlements; sourceTree = "<group>"; };
 		ED504B6421A0D7BF00D1BE0C /* Cue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cue.xcdatamodel; sourceTree = "<group>"; };
 		ED504B6621A0DDEA00D1BE0C /* orderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderCell.swift; sourceTree = "<group>"; };
 		ED64059921A0BCEF00FD4B27 /* makeOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeOrderViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +79,7 @@
 		EDDABD25219E360D00855763 /* Cue */ = {
 			isa = PBXGroup;
 			children = (
+				8EC62DF821B6006F007DA100 /* Cue.entitlements */,
 				EDDABD2A219E360D00855763 /* Main.storyboard */,
 				ED504B6321A0D7BF00D1BE0C /* Cue.xcdatamodeld */,
 				ED90123221A4C0D0006A67B2 /* whoOrderedViewController.swift */,
@@ -132,6 +134,11 @@
 				TargetAttributes = {
 					EDDABD22219E360D00855763 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -330,7 +337,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cue/Cue.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2K52R4S4JZ;
 				INFOPLIST_FILE = Cue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -347,7 +356,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cue/Cue.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2K52R4S4JZ;
 				INFOPLIST_FILE = Cue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
