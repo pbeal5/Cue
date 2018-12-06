@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8EA7D91321B8A8370023CEB2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA7D91221B8A8370023CEB2 /* CloudKit.framework */; };
 		ED36051C21AF940A001C6F00 /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED36051B21AF940A001C6F00 /* settingsViewController.swift */; };
 		ED36051E21AF94DA001C6F00 /* settingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED36051D21AF94DA001C6F00 /* settingsCell.swift */; };
 		ED504B6521A0D7BF00D1BE0C /* Cue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED504B6321A0D7BF00D1BE0C /* Cue.xcdatamodeld */; };
@@ -30,12 +31,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-
+		8EA7D91221B8A8370023CEB2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		8EC62DF821B6006F007DA100 /* Cue.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cue.entitlements; sourceTree = "<group>"; };
-
 		ED36051B21AF940A001C6F00 /* settingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 		ED36051D21AF94DA001C6F00 /* settingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsCell.swift; sourceTree = "<group>"; };
-af0299145128db7a3adc4824447ed2b9f06178d0
 		ED504B6421A0D7BF00D1BE0C /* Cue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cue.xcdatamodel; sourceTree = "<group>"; };
 		ED504B6621A0DDEA00D1BE0C /* orderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderCell.swift; sourceTree = "<group>"; };
 		ED64059921A0BCEF00FD4B27 /* makeOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeOrderViewController.swift; sourceTree = "<group>"; };
@@ -63,17 +62,27 @@ af0299145128db7a3adc4824447ed2b9f06178d0
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EA7D91321B8A8370023CEB2 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8EA7D91121B8A8370023CEB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8EA7D91221B8A8370023CEB2 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EDDABD1A219E360D00855763 = {
 			isa = PBXGroup;
 			children = (
 				EDDABD25219E360D00855763 /* Cue */,
 				EDDABD24219E360D00855763 /* Products */,
+				8EA7D91121B8A8370023CEB2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,6 +156,9 @@ af0299145128db7a3adc4824447ed2b9f06178d0
 					EDDABD22219E360D00855763 = {
 						CreatedOnToolsVersion = 10.0;
 						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -354,17 +366,13 @@ af0299145128db7a3adc4824447ed2b9f06178d0
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Cue/Cue.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-
 				DEVELOPMENT_TEAM = 2K52R4S4JZ;
-
-				DEVELOPMENT_TEAM = 44LV4667RJ;
-af0299145128db7a3adc4824447ed2b9f06178d0
 				INFOPLIST_FILE = Cue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cue.Cue;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cue.CueMVP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -377,17 +385,13 @@ af0299145128db7a3adc4824447ed2b9f06178d0
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Cue/Cue.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-
 				DEVELOPMENT_TEAM = 2K52R4S4JZ;
-
-				DEVELOPMENT_TEAM = 44LV4667RJ;
-af0299145128db7a3adc4824447ed2b9f06178d0
 				INFOPLIST_FILE = Cue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Cue.Cue;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Cue.CueMVP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

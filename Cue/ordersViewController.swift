@@ -61,8 +61,8 @@ class ordersViewController: UIViewController {
         else if let destination = segue.destination as? makeOrderViewController {
             
             if let indexPath = sender as? IndexPath{
-                print(indexPath.row)
-                print(tableData[indexPath.row])
+//                print(indexPath.row)
+//                print(tableData[indexPath.row])
                 destination.indexPath = indexPath
                 destination.orderInfo["Main"] = tableData[indexPath.row].main
                 destination.orderInfo["Base"] = tableData[indexPath.row].base
@@ -98,7 +98,7 @@ class ordersViewController: UIViewController {
 extension ordersViewController : makeOrderViewControllerDelegate{
     
     func backPressed() {
-        print("back pressed")
+//        print("back pressed")
         dismiss(animated: true, completion: nil)
     }
     
@@ -135,7 +135,7 @@ extension ordersViewController : makeOrderViewControllerDelegate{
         
         dismiss(animated: true, completion: nil)
         
-        print(orderInfo)
+//        print(orderInfo)
         
     }
 }
