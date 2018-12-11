@@ -7,127 +7,6 @@
 //
 
 import UIKit
-import CloudKit
-
-struct CloudOrder {
-    
-    fileprivate static let recordType = "CloudOrder"
-    fileprivate static let keys = (name : "main")
-    
-    var record : CKRecord
-    
-    init(record : CKRecord) {
-        self.record = record
-    }
-    
-    init() {
-        self.record = CKRecord(recordType: CloudOrder.recordType)
-    }
-    
-    var name : String {
-        get {
-            return self.record.value(forKey: CloudOrder.keys.name) as! String
-        }
-        set {
-            self.record.setValue(newValue, forKey: CloudOrder.keys.name)
-        }
-    }
-    
-}
-
-
-class OrdersModel {
-    
-    private let database = CKContainer.default().publicCloudDatabase
-    
-    var cloudOrder = [CloudOrder]() {
-        didSet {
-            self.notificationQueue.addOperation {
-                self.onChange?()
-            }
-        }
-    }
-    
-    var onChange : (() -> Void)?
-    var onError : ((Error) -> Void)?
-    var notificationQueue = OperationQueue.main
-    
-    var records = [CKRecord]()
-    var insertedObjects = [CloudOrder]()
-    var deletedObjectIds = Set<CKRecord.ID>()
-    
-    private func handle(error: Error) {
-        self.notificationQueue.addOperation {
-            self.onError?(error)
-        }
-    }
-    
-    @objc func refresh() {
-        let query = CKQuery(recordType: CloudOrder.recordType, predicate: NSPredicate(value: true))
-        
-        database.perform(query, inZoneWith: nil) { records, error in
-            guard let records = records, error == nil else {
-                self.handle(error: error!)
-                return
-            }
-            
-            self.records = records
-            self.updateCloudOrder()
-        }
-    }
-    
-    func addCloudOrder(name : String) {
-        
-        var cloudOrder = CloudOrder()
-        cloudOrder.name = name
-        database.save(cloudOrder.record) { _, error in
-            guard error == nil else {
-                self.handle(error: error!)
-                return
-            }
-        }
-        self.insertedObjects.append(cloudOrder)
-        self.updateCloudOrder()
-    }
-    
-    func delete(at index : Int) {
-        let recordId = self.cloudOrder[index].record.recordID
-        database.delete(withRecordID: recordId) { _, error in
-            guard error == nil else {
-                self.handle(error: error!)
-                return
-            }
-        }
-        deletedObjectIds.insert(recordId)
-        updateCloudOrder()
-    }
-    
-    private func updateCloudOrder() {
-        
-        var knownIds = Set(records.map { $0.recordID })
-        
-        // remove objects from our local list once we see them returned from the cloudkit storage
-        self.insertedObjects.remov eAll { cloudOrder in
-            knownIds.contains(cloudOrder.record.recordID)
-        }
-        knownIds.formUnion(self.insertedObjects.map { $0.record.recordID })
-        
-        // remove objects from our local list once we see them not being returned from storage anymore
-        self.deletedObjectIds.formIntersection(knownIds)
-        
-        var cloudOrder = records.map { record in CloudOrder(record: record) }
-        
-        cloudOrder.append(contentsOf: self.insertedObjects)
-        cloudOrder.removeAll { cloudOrder in
-            deletedObjectIds.contains(cloudOrder.record.recordID)
-        }
-        
-        self.cloudOrder = cloudOrder
-        
-        debugPrint("Tracking local objects \(self.insertedObjects) \(self.deletedObjectIds)")
-    }
-}
-
 
 
 //This file knows there is a makeOrderDelegate, and that these functions exists
@@ -137,8 +16,6 @@ protocol makeOrderViewControllerDelegate: class {
 }
 
 class makeOrderViewController: UIViewController {
-    
-    var model = OrdersModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -207,14 +84,6 @@ class makeOrderViewController: UIViewController {
             specialInstructionsTextView.text = orderInfo["Special Instructions"]
         }
         
-         self.model.refresh()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-//        self.model.refresh()
-        for record in self.model.cloudOrder {
-            print(record.name)
-        }
     }
 
     //Establish variables
@@ -249,9 +118,6 @@ class makeOrderViewController: UIViewController {
         
             delegate?.saveOrderPressed(orderInfo : orderInfo, indexPath: indexPath)
             
-            // CLOUD STUFF
-            self.model.addCloudOrder(name: orderInfo["Main"]!)
-//            print(self.model.cloudOrder)
         }
         else{
            let alert = UIAlertController(title: "All fields must be filled in.", message: "", preferredStyle: .alert)

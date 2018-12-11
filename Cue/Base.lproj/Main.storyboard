@@ -407,28 +407,24 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEe-97-abV">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyCircle" translatesAutoresizingMaskIntoConstraints="NO" id="PZC-Kn-I2g">
                                                     <rect key="frame" x="16" y="1" width="30" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="nce-0C-oz5"/>
-                                                        <constraint firstAttribute="height" constant="30" id="trC-ns-X60"/>
+                                                        <constraint firstAttribute="height" constant="30" id="LcR-Jn-r5B"/>
+                                                        <constraint firstAttribute="width" constant="30" id="bwQ-w1-lyg"/>
                                                     </constraints>
-                                                    <state key="normal" backgroundImage="emptyCircle"/>
-                                                    <connections>
-                                                        <action selector="contactPressed:" destination="tKe-tQ-b8x" eventType="touchUpInside" id="For-Of-PFi"/>
-                                                    </connections>
-                                                </button>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="PZC-Kn-I2g" firstAttribute="centerY" secondItem="WVd-iA-JYd" secondAttribute="centerY" id="9sp-hj-IHI"/>
                                                 <constraint firstItem="hib-XP-Ev1" firstAttribute="centerY" secondItem="WVd-iA-JYd" secondAttribute="centerY" id="BIp-MM-9HV"/>
-                                                <constraint firstItem="hib-XP-Ev1" firstAttribute="leading" secondItem="fEe-97-abV" secondAttribute="trailing" constant="16" id="Dr5-uf-ALu"/>
-                                                <constraint firstItem="fEe-97-abV" firstAttribute="centerY" secondItem="WVd-iA-JYd" secondAttribute="centerY" id="ctc-og-S6M"/>
-                                                <constraint firstItem="fEe-97-abV" firstAttribute="leading" secondItem="WVd-iA-JYd" secondAttribute="leading" constant="16" id="fXU-os-682"/>
+                                                <constraint firstItem="PZC-Kn-I2g" firstAttribute="leading" secondItem="WVd-iA-JYd" secondAttribute="leading" constant="16" id="Mfr-j1-2CG"/>
+                                                <constraint firstItem="hib-XP-Ev1" firstAttribute="leading" secondItem="PZC-Kn-I2g" secondAttribute="trailing" constant="16" id="dQ2-zo-TkM"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="contactNameLabel" destination="hib-XP-Ev1" id="58t-OY-43U"/>
-                                            <outlet property="contactSelected" destination="fEe-97-abV" id="AOl-WA-26J"/>
+                                            <outlet property="contactSelectedImageView" destination="PZC-Kn-I2g" id="asV-bb-0dy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -20,16 +20,8 @@ class ContactCell : UITableViewCell{
     
     @IBOutlet weak var contactNameLabel: UILabel!
     
-    @IBOutlet weak var contactSelected: UIButton!
-    
-    @IBAction func contactPressed(_ sender: UIButton) {
-        if contactSelected.backgroundImage(for: .normal) == UIImage(named: "emptyCircle"){
-            contactSelected.setBackgroundImage(UIImage(named: "filledCircle"), for : .normal)
-        }
-        else{
-           contactSelected.setBackgroundImage(UIImage(named: "emptyCircle"), for : .normal)
-        }
-        delegate?.selectedPressed(sender : self)
-    }
+    @IBOutlet weak var contactSelectedImageView: UIImageView!
     
 }
+
+

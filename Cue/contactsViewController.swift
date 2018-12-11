@@ -47,7 +47,11 @@ class contactsViewController: UIViewController {
     
     //fetch contacts function 
     func fetchContacts(){
+
+//        fetchContacts.sortOrder = CNContactSortOrder.UserDefault
+
         let contactStore = CNContactStore()
+
         do {
             try contactStore.enumerateContacts(with: CNContactFetchRequest(keysToFetch: [CNContactGivenNameKey as CNKeyDescriptor, CNContactFamilyNameKey as CNKeyDescriptor, CNContactMiddleNameKey as CNKeyDescriptor, CNContactEmailAddressesKey as CNKeyDescriptor,CNContactPhoneNumbersKey as CNKeyDescriptor])) {
                 (contact, cursor) -> Void in
@@ -69,7 +73,7 @@ class contactsViewController: UIViewController {
             if isSelected[i]{
                 count += 1
             }
-            
+
         }
         
         var alert : UIAlertController?
@@ -126,15 +130,14 @@ extension contactsViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "ContactCell", for : indexPath) as! ContactCell
         
         if let val = selectedContactsDict[filteredContacts[indexPath.row].identifier] {
-            cell.contactSelected.setBackgroundImage(UIImage(named: "filledCircle"), for: .normal)
+            cell.contactSelectedImageView.image = UIImage(named: "filledCircle")
         }
         else{
-           cell.contactSelected.setBackgroundImage(UIImage(named: "emptyCircle"), for: .normal)
+           cell.contactSelectedImageView.image = UIImage(named: "emptyCircle")
         }
         
         cell.contactNameLabel.text = filteredContacts[indexPath.row].givenName + " " + filteredContacts[indexPath.row].familyName
         cell.indexPath = indexPath
-        cell.delegate = self
         return cell
     }
     
@@ -142,27 +145,44 @@ extension contactsViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40.0
     }
-
-}
-
-//extending what you are in to what you want to bring in
-extension contactsViewController : ContactCellDelegate{
     
-    func selectedPressed(sender: ContactCell) {
-        
-        let contact = sender.indexPath?.row
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        if isSelected[contact!]{
-            selectedContactsDict.removeValue(forKey: filteredContacts[contact!].identifier)
+        let contact = indexPath.row
+        
+        print(contacts[contact])
+        
+        let cell = self.tableView.cellForRow(at: indexPath) as! ContactCell
+        
+        if cell.contactSelectedImageView.image == UIImage(named: "filledCircle"){
+            cell.contactSelectedImageView.image = UIImage(named: "emptyCircle")
+            selectedContactsDict.removeValue(forKey: filteredContacts[contact].identifier)
         }
-        else {
-            selectedContactsDict[filteredContacts[contact!].identifier] = filteredContacts[contact!].identifier
+        else{
+            cell.contactSelectedImageView.image = UIImage(named: "filledCircle")
+            selectedContactsDict[filteredContacts[contact].identifier] = filteredContacts[contact].identifier
         }
         
-        isSelected[contact!] = !isSelected[contact!]
+        isSelected[contact] = !isSelected[contact]
+
+
+       
+//        if let val = selectedContactsDict[filteredContacts[contact].identifier] {
+//            contacts[contact].contactSelectedImageView.image = UIImage(named: "filledCircle")
+//        }
+//        else{
+//            contacts[contact].contactSelectedImageView.image = UIImage(named: "emptyCircle")
+//        }
+//
+//        if isSelected[contact]{
+//            selectedContactsDict.removeValue(forKey: filteredContacts[contact].identifier)
+//        }
+//        else {
+//            selectedContactsDict[filteredContacts[contact].identifier] = filteredContacts[contact].identifier
+//        }
         
+//        isSelected[contact] = !isSelected[contact]
     }
-    
 }
 
 extension contactsViewController : UISearchBarDelegate{
