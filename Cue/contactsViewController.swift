@@ -36,7 +36,7 @@ class contactsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         contactSearchBar.delegate = self
-
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {

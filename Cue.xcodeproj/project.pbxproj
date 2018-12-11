@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8EA7D91321B8A8370023CEB2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA7D91221B8A8370023CEB2 /* CloudKit.framework */; };
 		ED36051C21AF940A001C6F00 /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED36051B21AF940A001C6F00 /* settingsViewController.swift */; };
 		ED36051E21AF94DA001C6F00 /* settingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED36051D21AF94DA001C6F00 /* settingsCell.swift */; };
 		ED504B6521A0D7BF00D1BE0C /* Cue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED504B6321A0D7BF00D1BE0C /* Cue.xcdatamodeld */; };
@@ -31,7 +30,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8EA7D91221B8A8370023CEB2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		8EC62DF821B6006F007DA100 /* Cue.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cue.entitlements; sourceTree = "<group>"; };
 		ED36051B21AF940A001C6F00 /* settingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 		ED36051D21AF94DA001C6F00 /* settingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsCell.swift; sourceTree = "<group>"; };
@@ -62,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EA7D91321B8A8370023CEB2 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +69,6 @@
 		8EA7D91121B8A8370023CEB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8EA7D91221B8A8370023CEB2 /* CloudKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,7 +156,7 @@
 								enabled = 1;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
