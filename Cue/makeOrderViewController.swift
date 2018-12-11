@@ -107,7 +107,7 @@ class OrdersModel {
         var knownIds = Set(records.map { $0.recordID })
         
         // remove objects from our local list once we see them returned from the cloudkit storage
-        self.insertedObjects.removeAll { cloudOrder in
+        self.insertedObjects.remov eAll { cloudOrder in
             knownIds.contains(cloudOrder.record.recordID)
         }
         knownIds.formUnion(self.insertedObjects.map { $0.record.recordID })
