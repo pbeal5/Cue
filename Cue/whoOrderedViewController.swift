@@ -8,6 +8,7 @@
 
 import UIKit
 import Contacts
+import CoreData
 
 class whoOrderedViewController: UIViewController {
 
@@ -16,17 +17,27 @@ class whoOrderedViewController: UIViewController {
     
     //variables
     var tableData : [FriendsOrder] = []
+    var contactTableData : [ContactsForOrder] = []
     var contactsSelected : [CNContact]?
+    var selectedContactsDict : [String : String] = [:]
+    var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //over rides
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        print(selectedContactsDict)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(contactsSelected)
+        fetchContactItems()
+        
+        print("this is the contact table data:")
+        for contact in contactTableData{
+                    print(contact.givenName)
+        }
     }
     
     //button
@@ -47,6 +58,17 @@ class whoOrderedViewController: UIViewController {
                 "Special Instructions" : tableData[indexPath.row].specialInstructions,
                 "Restaurant" : tableData[indexPath.row].restaurant
                 ] as! [String : String]
+        }
+    }
+    
+    
+    func fetchContactItems(){
+        let request: NSFetchRequest<ContactsForOrder> = ContactsForOrder.fetchRequest()
+        do {
+            contactTableData = try context.fetch(request)
+        }
+        catch{
+            print("\(error)")
         }
     }
     

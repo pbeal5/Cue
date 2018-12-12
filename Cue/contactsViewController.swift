@@ -8,6 +8,7 @@
 
 import UIKit
 import Contacts
+import CoreData
 
 protocol contactsViewControllerDelegate : class {
     func backPressed()
@@ -27,7 +28,7 @@ class contactsViewController: UIViewController {
     var contacts : [CNContact] = []
     var filteredContacts : [CNContact] = []
     var isSelected: [Bool] = []
-    var selectedContactsDict : [String : String] = [:]
+    var selectedContactsDict : [String : CNContact] = [:]
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //viewdidload
@@ -41,6 +42,7 @@ class contactsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         fetchContacts()
+        contacts = contacts.sorted { $0.familyName < $1.familyName }
         filteredContacts = contacts
         tableView.reloadData()
     }
@@ -88,22 +90,35 @@ class contactsViewController: UIViewController {
         alert?.addAction(UIAlertAction(title: "Yes, add more", style: .cancel, handler: nil))
         
         alert?.addAction(UIAlertAction(title: "No, all good.", style: .default, handler: {action in
+            
+        //Store selected contacts in core data
+            
+            let contactsForOrder = ContactsForOrder(context:self.context)
+            
+            for (key,value) in self.selectedContactsDict {
+                
+                contactsForOrder.identifier = self.selectedContactsDict[key]?.identifier
+                contactsForOrder.familyName = self.selectedContactsDict[key]?.familyName
+                contactsForOrder.givenName = self.selectedContactsDict[key]?.givenName
+
+                do{
+                    try self.context.save()
+                }
+                catch{
+                    print("\(error)")
+                }
+            }
+
+        
             let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabController") as! MainTabController
+            
             mainTabController.selectedViewController = mainTabController.viewControllers?[2]
             
-//            let vc = self.tabBarController?.viewControllers![2] as? whoOrderedViewController
-//            vc?.contactsSelected = self.contacts
-        
-        // store firstName, lastName, identifier
-            
-            
-//            var destTab = self.tabBarController?.viewControllers?[2] as whoOrderedViewController
-//            destTab.con = firstArray
-//
             self.present(mainTabController, animated: true, completion: nil)
         }))
         
         self.present(alert!, animated: true)
+
     }
     
     @IBAction func contactsPressed(_ sender: UIButton) {
@@ -115,6 +130,16 @@ class contactsViewController: UIViewController {
     }
 
     //functions
+    
+//    func fetchContactItems(){
+//        let request: NSFetchRequest<ContactsForOrder> = ContactsForOrder.fetchRequest()
+//        do {
+//            tableData = try context.fetch(request)
+//        }
+//        catch{
+//            print("\(error)")
+//        }
+//    }
 
 }
 
@@ -160,7 +185,7 @@ extension contactsViewController : UITableViewDelegate, UITableViewDataSource {
         }
         else{
             cell.contactSelectedImageView.image = UIImage(named: "filledCircle")
-            selectedContactsDict[filteredContacts[contact].identifier] = filteredContacts[contact].identifier
+            selectedContactsDict[filteredContacts[contact].identifier] = filteredContacts[contact]
         }
         
         isSelected[contact] = !isSelected[contact]
