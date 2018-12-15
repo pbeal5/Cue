@@ -17,8 +17,8 @@ class FriendsOrderCell : UITableViewCell{
     
     //outlet
     @IBOutlet weak var contactNameLabel: UILabel!
+    @IBOutlet weak var confirmedOrderImageView: UIImageView!
     
-    @IBOutlet weak var statusButton: UIButton!
     
     //variables
     var indexPath : IndexPath?

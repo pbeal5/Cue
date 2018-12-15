@@ -21,6 +21,7 @@ class contactsViewController: UIViewController {
     @IBOutlet weak var restaurantLogo: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var contactSearchBar: UISearchBar!
+    @IBOutlet weak var cueUpPressedText: UIButton!
     
     //variables
     var logo = ""
@@ -28,8 +29,10 @@ class contactsViewController: UIViewController {
     var contacts : [CNContact] = []
     var filteredContacts : [CNContact] = []
     var isSelected: [Bool] = []
-    var selectedContactsDict : [String : CNContact] = [:]
+    var selectedContactsDict : [String : ContactsForOrder] = [:]
+    var tableData : [ContactsForOrder] = []
     var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var count = 0
     
     //viewdidload
     override func viewDidLoad() {
@@ -69,58 +72,30 @@ class contactsViewController: UIViewController {
     //buttons
     @IBAction func cueUpPressed(_ sender: UIButton) {
         
-        var count = 0
-        
-        for i in 0..<isSelected.count{
-            if isSelected[i]{
-                count += 1
-            }
+//            //find the contacts that are selected and send to core data
+//            for j in 0..<self.contacts.count{
+//                if self.isSelected[j]{
+//                    var changeType : ContactsForOrder?
+//                    changeType?.identifier = self.contacts[j].identifier
+//                    changeType?.givenName = self.contacts[j].givenName
+//                    changeType?.familyName = self.contacts[j].familyName
+//                    self.tableData.append(changeType!)
+//                }
+//            }
+//
+//            do{
+//                try self.context.save()
+//            }
+//            catch{
+//                print("\(error)")
+//            }
 
-        }
-        
-        var alert : UIAlertController?
-        
-        if count == 1{
-            alert = UIAlertController(title: "You've selected \(count) person.", message: "Do you want to add more?", preferredStyle: .alert)
-        }
-        else{
-            alert = UIAlertController(title: "You've selected \(count) people.", message: "Do you want to add more?", preferredStyle: .alert)
-        }
-        
-        alert?.addAction(UIAlertAction(title: "Yes, add more", style: .cancel, handler: nil))
-        
-        alert?.addAction(UIAlertAction(title: "No, all good.", style: .default, handler: {action in
-            
-        //Store selected contacts in core data
-            
-            let contactsForOrder = ContactsForOrder(context:self.context)
-            
-            for (key,value) in self.selectedContactsDict {
-                
-                contactsForOrder.identifier = self.selectedContactsDict[key]?.identifier
-                contactsForOrder.familyName = self.selectedContactsDict[key]?.familyName
-                contactsForOrder.givenName = self.selectedContactsDict[key]?.givenName
-
-                do{
-                    try self.context.save()
-                }
-                catch{
-                    print("\(error)")
-                }
-            }
-
-        
-            let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabController") as! MainTabController
-            
-            mainTabController.selectedViewController = mainTabController.viewControllers?[2]
-            
-            self.present(mainTabController, animated: true, completion: nil)
-        }))
-        
-        self.present(alert!, animated: true)
-
+        let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabController") as! MainTabController
+        mainTabController.selectedViewController = mainTabController.viewControllers?[2]
+        self.present(mainTabController, animated: true, completion: nil)
     }
     
+    //buttons
     @IBAction func contactsPressed(_ sender: UIButton) {
     }
     @IBAction func groupsPressed(_ sender: UIButton) {
@@ -131,15 +106,15 @@ class contactsViewController: UIViewController {
 
     //functions
     
-//    func fetchContactItems(){
-//        let request: NSFetchRequest<ContactsForOrder> = ContactsForOrder.fetchRequest()
-//        do {
-//            tableData = try context.fetch(request)
-//        }
-//        catch{
-//            print("\(error)")
-//        }
-//    }
+    func fetchContactItems(){
+        let request: NSFetchRequest<ContactsForOrder> = ContactsForOrder.fetchRequest()
+        do {
+            tableData = try context.fetch(request)
+        }
+        catch{
+            print("\(error)")
+        }
+    }
 
 }
 
@@ -171,23 +146,45 @@ extension contactsViewController : UITableViewDelegate, UITableViewDataSource {
         return 40.0
     }
     
+    //selected rows
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let contact = indexPath.row
-        
-        print(contacts[contact])
         
         let cell = self.tableView.cellForRow(at: indexPath) as! ContactCell
         
         if cell.contactSelectedImageView.image == UIImage(named: "filledCircle"){
             cell.contactSelectedImageView.image = UIImage(named: "emptyCircle")
-            selectedContactsDict.removeValue(forKey: filteredContacts[contact].identifier)
+            count = count - 1
+//            selectedContactsDict.removeValue(forKey: filteredContacts[contact].identifier)
         }
         else{
             cell.contactSelectedImageView.image = UIImage(named: "filledCircle")
-            selectedContactsDict[filteredContacts[contact].identifier] = filteredContacts[contact]
+            count = count + 1
+//            var combinedEntry : ContactsForOrder?
+//            combinedEntry?.identifier = filteredContacts[contact].identifier
+//            combinedEntry?.givenName = filteredContacts[contact].givenName
+//            combinedEntry?.familyName = filteredContacts[contact].familyName
+//            selectedContactsDict[filteredContacts[contact].identifier] = combinedEntry
+//
+//            print(selectedContactsDict[filteredContacts[contact].identifier])
+            
+//            selectedContactsDict[filteredContacts[contact].identifier]?.givenName = filteredContacts[contact].givenName
+//            selectedContactsDict[filteredContacts[contact].identifier]?.familyName = filteredContacts[contact].familyName
         }
         
+        UIView.setAnimationsEnabled(false)
+        
+        if count == 1{
+            cueUpPressedText.setTitle("Cue up \(count) order", for: .normal)
+            
+        }
+        else{
+             cueUpPressedText.setTitle("Cue up \(count) orders", for: .normal)
+        }
+        
+        
+       
         isSelected[contact] = !isSelected[contact]
 
 

@@ -90,33 +90,29 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlm-YW-d1g">
-                                                    <rect key="frame" x="31" y="11.5" width="108" height="21"/>
+                                                    <rect key="frame" x="48" y="11.5" width="108" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gd0-1U-Tqy">
-                                                    <rect key="frame" x="329" y="7" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkMark" translatesAutoresizingMaskIntoConstraints="NO" id="02u-Cl-g9q">
+                                                    <rect key="frame" x="16" y="14" width="16" height="16"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="EUZ-q8-FdL"/>
-                                                        <constraint firstAttribute="height" constant="30" id="pt8-no-FEg"/>
+                                                        <constraint firstAttribute="width" constant="16" id="1o1-BH-UcR"/>
+                                                        <constraint firstAttribute="height" constant="16" id="SgY-pJ-w7O"/>
                                                     </constraints>
-                                                    <state key="normal" backgroundImage="emptyAlert"/>
-                                                    <connections>
-                                                        <action selector="statusPressed:" destination="awI-0f-krx" eventType="touchUpInside" id="nxD-fV-LRi"/>
-                                                    </connections>
-                                                </button>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Dlm-YW-d1g" firstAttribute="leading" secondItem="YJq-2n-BDQ" secondAttribute="leadingMargin" constant="16" id="FOq-Ti-y6R"/>
-                                                <constraint firstAttribute="trailing" secondItem="gd0-1U-Tqy" secondAttribute="trailing" constant="16" id="X9a-PN-oqL"/>
                                                 <constraint firstItem="Dlm-YW-d1g" firstAttribute="centerY" secondItem="YJq-2n-BDQ" secondAttribute="centerY" id="ijS-m3-exp"/>
-                                                <constraint firstItem="gd0-1U-Tqy" firstAttribute="centerY" secondItem="YJq-2n-BDQ" secondAttribute="centerY" id="lnK-UZ-Gy7"/>
+                                                <constraint firstItem="Dlm-YW-d1g" firstAttribute="leading" secondItem="02u-Cl-g9q" secondAttribute="trailing" constant="16" id="qbb-Ss-qgb"/>
+                                                <constraint firstItem="02u-Cl-g9q" firstAttribute="leading" secondItem="YJq-2n-BDQ" secondAttribute="leading" constant="16" id="uLs-Wy-GnU"/>
+                                                <constraint firstItem="02u-Cl-g9q" firstAttribute="centerY" secondItem="YJq-2n-BDQ" secondAttribute="centerY" id="vLf-dt-yi6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="confirmedOrderImageView" destination="02u-Cl-g9q" id="sLe-N5-kLA"/>
                                             <outlet property="contactNameLabel" destination="Dlm-YW-d1g" id="ddq-NJ-lvu"/>
-                                            <outlet property="statusButton" destination="gd0-1U-Tqy" id="onZ-Ku-ce1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -128,7 +124,7 @@
                                     <constraint firstAttribute="height" constant="53" id="L7I-Uj-TOD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="Send last call">
+                                <state key="normal" title="View Orders">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -158,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KY2-Wf-ULx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1982" y="1191"/>
+            <point key="canvasLocation" x="1981.5999999999999" y="1190.5547226386807"/>
         </scene>
         <!--View Friends Order View Controller-->
         <scene sceneID="FxS-fj-RWM">
@@ -517,6 +513,7 @@
                     </view>
                     <connections>
                         <outlet property="contactSearchBar" destination="yZW-tO-N02" id="nyL-VD-GKH"/>
+                        <outlet property="cueUpPressedText" destination="Mbd-cu-0o4" id="wfP-jY-O7I"/>
                         <outlet property="restaurantLogo" destination="cv5-Er-Ug6" id="Uij-7g-FMy"/>
                         <outlet property="searchDisplayController" destination="0uI-9a-589" id="Kc3-9k-RqH"/>
                         <outlet property="tableView" destination="YKT-OX-8Kh" id="WoA-KA-RrE"/>
@@ -893,8 +890,8 @@
     </scenes>
     <resources>
         <image name="bag" width="19" height="24.5"/>
+        <image name="checkMark" width="180" height="180"/>
         <image name="chipotle" width="43" height="43"/>
-        <image name="emptyAlert" width="22.5" height="22.5"/>
         <image name="emptyCircle" width="22.5" height="22.5"/>
         <image name="person" width="26.5" height="24"/>
         <image name="phone" width="24.5" height="24.5"/>

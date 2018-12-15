@@ -27,16 +27,13 @@ class whoOrderedViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        print(selectedContactsDict)
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fetchContactItems()
         
-        print("this is the contact table data:")
         for contact in contactTableData{
-                    print(contact.givenName)
         }
     }
     
@@ -94,9 +91,12 @@ extension whoOrderedViewController  : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsOrderCell", for: indexPath) as! FriendsOrderCell
-        let order = tableData[indexPath.row]
+        let contact = contactTableData[indexPath.row]
         cell.indexPath = indexPath
         cell.delegate = self
+        cell.contactNameLabel.text = contact.givenName! + " " + contact.familyName!
+        print(contact.givenName! + " " + contact.familyName!)
+        cell.confirmedOrderImageView.image = UIImage(named: "")
         return cell
     }
 }
